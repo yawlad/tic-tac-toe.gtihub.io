@@ -1,8 +1,8 @@
 :root {
-  --gradient-color-1: #ff5e00;
-  --gradient-color-2: #ff0000;
-  --gradient-color-3: #e22aba;
-  --gradient-color-4: #f0ff1b;
+  --gradient-color-1: #2C3E50;
+  --gradient-color-2: #34495E ;
+  --gradient-color-3: #1E1E1E ;
+  --gradient-color-4: #4D4D4D ;
 
   --cell-size: 10rem;
   --symbols-size: 4rem;
