@@ -1,0 +1,178 @@
+:root {
+  --gradient-color-1: #ff5e00;
+  --gradient-color-2: #ff0000;
+  --gradient-color-3: #e22aba;
+  --gradient-color-4: #f0ff1b;
+
+  --cell-size: 10rem;
+  --symbols-size: 4rem;
+
+  --font-size-xl: 4rem;
+  --font-size-l: 3rem;
+  --font-size-m: 2rem;
+
+  --offset-xxxl: 4rem;
+  --offset-xxl: 3rem;
+  --offset-xl: 2rem;
+  --offset-l: 1.5rem;
+  --offset-m: 1rem;
+  --offset-xs: 0.5rem;
+
+  --game-field-offset-top: calc(var(--offset-m) * 5);
+
+  --backgroud-animation-time: 10s;
+  --transition-time: 0.5s;
+
+  --glass-background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0)
+  );
+  --glass-blur: blur(var(--offset-xs));
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.glass_effect {
+  background: var(--glass-background);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  box-shadow: 0 0.5rem 2rem 0 rgba(0, 0, 0, 0.32);
+}
+
+* {
+  box-sizing: border-box;
+  font-family: sans-serif;
+  font-weight: 700;
+}
+
+html {
+  font-size: calc(10px + 10 * ((100vw - 400px) / (1920 - 400)));
+}
+
+body {
+  background: linear-gradient(
+    -45deg,
+    var(--gradient-color-1),
+    var(--gradient-color-2),
+    var(--gradient-color-3),
+    var(--gradient-color-4)
+  );
+  background-size: 400% 400%;
+  animation: gradient var(--backgroud-animation-time) ease infinite;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+.game_field {
+  border-radius: var(--offset-l);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: fit-content;
+  height: fit-content;
+  overflow: hidden;
+  margin-top: var(--game-field-offset-top);
+  padding: var(--offset-xl);
+  gap: var(--offset-m);
+}
+
+.row {
+  display: flex;
+  gap: var(--offset-m);
+}
+
+.cell {
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-family: sans-serif;
+  opacity: 0;
+  transition: var(--transition-time);
+  width: var(--cell-size);
+  height: var(--cell-size);
+  font-size: var(--symbols-size);
+  border-radius: var(--offset-xs);
+}
+
+.cell_playable {
+  opacity: 0.3;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.player_cell,
+.computer_cell {
+  background-color: rgba(255, 255, 255, 0.1);
+  cursor: default;
+  opacity: 1;
+}
+
+.winner {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.game_over {
+  
+  transition: var(--transition-time);
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  cursor: default;
+  flex-direction: column;
+  gap: var(--offset-xxxl);
+  background-color: rgba(0, 0, 0, 0.3);
+  opacity: 0;
+}
+
+.game_over_active {
+  opacity: 1;
+}
+
+.game_over_text {
+  color: white;
+  font-size: var(--font-size-l);
+  padding: var(--offset-m) var(--offset-l);
+  border-radius: var(--offset-m);
+  overflow: hidden;
+}
+
+.game_over_button {
+  font-size: var(--font-size-m);
+  color: white;
+  border: none;
+  border-radius: var(--offset-xs);
+  cursor: pointer;
+  transition: var(--transition-time);
+  padding: var(--offset-m) var(--offset-l);
+}
+
+.game_over_buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--offset-xl);
+}
+
+.game_over_button:hover {
+  transform: scale(1.07);
+}
