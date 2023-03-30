@@ -3,6 +3,10 @@
   --gradient-color-2: #34495E ;
   --gradient-color-3: #1E1E1E ;
   --gradient-color-4: #4D4D4D ;
+  --background-color-s: rgba(255, 255, 255, 0.1);
+  --background-color-m: rgba(255, 255, 255, 0.3);
+  --background-color-l: rgba(255, 255, 255, 0.4);
+  --background-color-upper: rgba(0, 0, 0, 0.32);
 
   --cell-size: 10rem;
   --symbols-size: 4rem;
@@ -28,7 +32,7 @@
     rgba(255, 255, 255, 0.1),
     rgba(255, 255, 255, 0)
   );
-  --glass-blur: blur(var(--offset-xs));
+  --glass-blur: blur(var(--offset-m));
 }
 
 @keyframes gradient {
@@ -47,7 +51,7 @@
   background: var(--glass-background);
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
-  box-shadow: 0 0.5rem 2rem 0 rgba(0, 0, 0, 0.32);
+  box-shadow: 0 0.5rem 2rem 0 var(--background-color-upper);
 }
 
 * {
@@ -113,22 +117,21 @@ body {
 
 .cell_playable {
   opacity: 0.3;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: var(--background-color-s);
 }
 
 .player_cell,
 .computer_cell {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: var(--background-color-s);
   cursor: default;
   opacity: 1;
 }
 
 .winner {
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: var(--background-color-l);
 }
 
 .game_over {
-  
   transition: var(--transition-time);
   position: absolute;
   top: 0;
@@ -141,7 +144,7 @@ body {
   cursor: default;
   flex-direction: column;
   gap: var(--offset-xxxl);
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: var(--background-color-upper);
   opacity: 0;
 }
 
@@ -155,6 +158,7 @@ body {
   padding: var(--offset-m) var(--offset-l);
   border-radius: var(--offset-m);
   overflow: hidden;
+  background-color: var(--background-color-l);
 }
 
 .game_over_button {
@@ -165,6 +169,7 @@ body {
   cursor: pointer;
   transition: var(--transition-time);
   padding: var(--offset-m) var(--offset-l);
+  background-color: var(--background-color-l);
 }
 
 .game_over_buttons {
@@ -174,5 +179,5 @@ body {
 }
 
 .game_over_button:hover {
-  transform: scale(1.07);
+  transform: scale(1.05);
 }
